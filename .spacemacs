@@ -31,15 +31,17 @@ values."
       (elfeed :variables rmh-elfeed-org-files (list "~/.emacs.d/private/elfeed1.org"
 
                                                     "~/.emacs.d/private/elfeed2.org"))
+      ;; crystal
       elixir
-      elm
       emacs-lisp
       erlang
       evil-commentary
       git
       github
       html
+      ;; ipython
       javascript
+      ;; json
       markdown
       org
       osx
@@ -71,7 +73,7 @@ values."
    dotspacemacs-delete-orphan-packages t))
 
 (defun dotspacemacs-configuration-layers ()
-  '((ruby :variables ruby-version-manager 'rvm)))
+  '((ruby :variables ruby-version-manager 'rbenv)))
 
 (defun dotspacemacs/init ()
   "Initialization function.
@@ -213,7 +215,7 @@ values."
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup nil
+   dotspacemacs-maximized-at-startup t
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -231,7 +233,7 @@ values."
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
    ;; (default nil)
    dotspacemacs-smartparens-strict-mode nil
@@ -255,7 +257,7 @@ values."
    ;; `trailing' to delete only the whitespace at end of lines, `changed'to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
-   dotspacemacs-whitespace-cleanup nil
+   dotspacemacs-whitespace-cleanup 'all
    ))
 
 (defun dotspacemacs/user-init ()
@@ -291,7 +293,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic eval-sexp-fu org-mime dash-functional goto-chg marshal gitignore-mode epl org-category-capture queue ghub let-alist diminish winum unfill fuzzy flycheck-credo company-ansible paredit log4e rake pcre2el alert markdown-mode haml-mode git-gutter anzu powerline tern hydra inflections multiple-cursors cider seq spinner clojure-mode bind-key packed avy auto-complete inf-ruby yasnippet elfeed highlight iedit smartparens bind-map f evil undo-tree elixir-mode flycheck gh pcache ht helm helm-core s magit projectile js2-mode simple-httpd company macrostep d-mode company-dcd ivy flycheck-dmd-dub uuidgen slime-company pug-mode osx-dictionary org-projectile org-download ob-elixir org mwim minitest livid-mode skewer-mode link-hint jinja2-mode insert-shebang hide-comnt github-search magit-popup git-commit with-editor dash async flyspell-correct-helm flyspell-correct flycheck-mix eyebrowse evil-visual-mark-mode evil-unimpaired evil-ediff eshell-z dumb-jump company-shell common-lisp-snippets column-enforce-mode clojure-snippets request yaml-mode xterm-color ws-butler window-numbering which-key web-mode web-beautify volatile-highlights use-package toc-org tagedit spacemacs-theme spaceline smooth-scrolling smeargle slime slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode ruby-end rubocop rspec-mode robe reveal-in-osx-finder restart-emacs rbenv rainbow-delimiters quelpa projectile-rails persp-mode pbcopy paradox page-break-lines osx-trash orgit org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets open-junk-file neotree multi-term move-text mmm-mode markdown-toc magit-gitflow magit-gh-pulls lorem-ipsum linum-relative leuven-theme less-css-mode launchctl json-mode js2-refactor js-doc jade-mode info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flyspell helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md flycheck-pos-tip flycheck-elm flx-ido fish-mode fill-column-indicator feature-mode fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-commentary evil-args evil-anzu eshell-prompt-extras esh-help erlang emmet-mode elm-mode elisp-slime-nav elfeed-web elfeed-org elfeed-goodies diff-hl define-word company-web company-tern company-statistics company-quickhelp coffee-mode clj-refactor clean-aindent-mode cider-eval-sexp-fu chruby bundler buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile ansible-doc ansible alchemist aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+    (treepy graphql gntp json-snatcher json-reformat parent-mode fringe-helper git-gutter+ logito pos-tip flx ace-jump-mode noflet popwin web-completion-data edn peg sesman popup pkg-info yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic eval-sexp-fu org-mime dash-functional goto-chg marshal gitignore-mode epl org-category-capture queue ghub let-alist diminish winum unfill fuzzy flycheck-credo company-ansible paredit log4e rake pcre2el alert markdown-mode haml-mode git-gutter anzu powerline tern hydra inflections multiple-cursors cider seq spinner clojure-mode bind-key packed avy auto-complete inf-ruby yasnippet elfeed highlight iedit smartparens bind-map f evil undo-tree elixir-mode flycheck gh pcache ht helm helm-core s magit projectile js2-mode simple-httpd company macrostep d-mode company-dcd ivy flycheck-dmd-dub uuidgen slime-company pug-mode osx-dictionary org-projectile org-download ob-elixir org mwim minitest livid-mode skewer-mode link-hint jinja2-mode insert-shebang hide-comnt github-search magit-popup git-commit with-editor dash async flyspell-correct-helm flyspell-correct flycheck-mix eyebrowse evil-visual-mark-mode evil-unimpaired evil-ediff eshell-z dumb-jump company-shell common-lisp-snippets column-enforce-mode clojure-snippets request yaml-mode xterm-color ws-butler window-numbering which-key web-mode web-beautify volatile-highlights use-package toc-org tagedit spacemacs-theme spaceline smooth-scrolling smeargle slime slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode ruby-end rubocop rspec-mode robe reveal-in-osx-finder restart-emacs rbenv rainbow-delimiters quelpa projectile-rails persp-mode pbcopy paradox page-break-lines osx-trash orgit org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets open-junk-file neotree multi-term move-text mmm-mode markdown-toc magit-gitflow magit-gh-pulls lorem-ipsum linum-relative leuven-theme less-css-mode launchctl json-mode js2-refactor js-doc jade-mode info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flyspell helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md flycheck-pos-tip flycheck-elm flx-ido fish-mode fill-column-indicator feature-mode fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-commentary evil-args evil-anzu eshell-prompt-extras esh-help erlang emmet-mode elm-mode elisp-slime-nav elfeed-web elfeed-org elfeed-goodies diff-hl define-word company-web company-tern company-statistics company-quickhelp coffee-mode clj-refactor clean-aindent-mode cider-eval-sexp-fu chruby bundler buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile ansible-doc ansible alchemist aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
